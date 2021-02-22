@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+{% if user.is_authenticated %}
+
+<br><h6><i> A-Z </i></h6>
+
+    {% for recipe in recipe_list %}
+    <br> <b> <i> <h3> {{ recipe.recipe_name }} </h3> </i> </b> <br> <br>
+
+        <ul>
+            <li> <h5> Ingredients: </h5> <br> {{ recipe.recipe_ingredients }} </li> <br> <br>
+
+            <li> <h5> Manual: </h5> <br> {{ recipe.recipe_text }} </li> <br> <br>
+        </ul>
+
+    Author: {{ recipe.user }}
+    <hr>
+    {% endfor %}
+
+{% endif %}
+{% endblock %}
