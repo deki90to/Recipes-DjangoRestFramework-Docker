@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.fields import CharField
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 # Create your models here.
 
@@ -17,4 +18,3 @@ class Recipe(models.Model):
 
     class Meta:
         ordering = ['recipe_name']
-
