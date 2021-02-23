@@ -1,3 +1,4 @@
+from django.db import models
 from django.shortcuts import render
 from django.views import generic
 from . models import Recipe
@@ -25,6 +26,19 @@ class RecipeCreateView(generic.CreateView):
 class MyRecipeListView(generic.ListView):
     template_name = 'myrecipe_list.html'
     model = Recipe
+
+
+class MyRecipeDeleteView(generic.DeleteView):
+    template_name = 'myrecipe_delete.html'
+    model = Recipe
+    success_url = reverse_lazy('my-recipes')
+
+class MyRecipeUpdateView(generic.UpdateView):
+    template_name = 'myrecipe_update.html'
+    model = Recipe
+    form_class = RecipeCreateForm
+    success_url = reverse_lazy('my-recipes')
+
 
 
 def search(request):

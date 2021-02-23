@@ -11,7 +11,7 @@ class Recipe(models.Model):
     recipe_name = models.CharField(max_length=200)
     recipe_ingredients = models.TextField(max_length=3000)
     recipe_text = models.TextField(max_length=10000)
-    email = models.EmailField(max_length=50)
+    email = models.EmailField(max_length=50, blank=True)
 
     def __str__(self):
         return (f'{self.user}, {self.recipe_name} | {self.email}')

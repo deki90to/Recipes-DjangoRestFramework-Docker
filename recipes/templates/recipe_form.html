@@ -7,14 +7,12 @@
     <form class="form-group" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
         <table class="table">
-
             {{ form.as_table }}
-
         </table>
         <br><br>
         
-        <input class="btn btn-primary" type="submit" value='Post'>
-        <a href="{% url 'recipes' %}" class="btn btn-primary"> Cancel </a>
+        <input class="btn btn-info text-light" type="submit" value='Post'>
+        <a href="{% url 'recipes' %}" class="btn btn-info text-light"> Cancel </a>
 
         <script>
             var name = '{{ user.id }}';

@@ -12,12 +12,14 @@
             <br> <b> <i> <h3> {{ recipe.recipe_name }} </h3> </i> </b> <br> <br>
             
             <ul>
-                <li> <h5> Ingredients: </h5> <br> {{ recipe.recipe_ingredients }} </li> <br> <br>
+                <li> <i> <h5> Ingredients: </h5> <br> {{ recipe.recipe_ingredients }} </i> </li> <br> <br>
 
-                <li> <h5> Manual: </h5> <br> {{ recipe.recipe_text }} </li> <br> <br>
+                <li> <i> <h5> Manual: </h5> <br> {{ recipe.recipe_text }} </i> </li> <br> <br>
             </ul>
             
-            Author: {{ recipe.user }} <br> 
+            Author: {{ recipe.user }} <br> <br>
+                <a href="{% url 'my-recipe-update' recipe.pk %}" class="btn btn-sm btn-outline-info bg-light text-info"> Update </a>
+                <a href="{% url 'my-recipe-delete' recipe.pk %}" class="btn btn-sm btn-outline-info bg-light text-info"> Delete </a>
             <hr>
 
         {% endif %}
