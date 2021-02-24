@@ -15,4 +15,4 @@ class RecipeCreateForm(forms.ModelForm):
         fields = '__all__'
         widgets = {
             'user':forms.TextInput(attrs={'class': 'form-control', 'value':'', 'id':'admin', 'type':'hidden'}),
-            }
+        }

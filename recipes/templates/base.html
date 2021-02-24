@@ -54,18 +54,7 @@
       </div>
     </nav>
     <br>
-
-
-    <div class="container-fluid">
-      <form class="d-flex" action="{% url 'search' %}">
-        <input class="form-control me-2" type="search" placeholder="Search By Name, Ingredients or Text" aria-label="Search" name="search">
-        <button class="btn btn-outline-info" type="submit">Search</button>
-      </form>
-    </div>
-
-
 {% endif %}
-
 </head>
 
 
@@ -73,7 +62,6 @@
 <body>
 
 <ul>
-
   {% block body %}
     <h1> NO CONTENT </h1>
   {% endblock %}
