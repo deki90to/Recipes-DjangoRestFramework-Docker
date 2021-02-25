@@ -15,6 +15,7 @@ class RecipeListView(generic.ListView):
     template_name = 'recipe_list.html'
     model = Recipe
     form_class = RecipeListForm
+    # context_object_name = 'recipe_list'
 
 
 class RecipeCreateView(generic.CreateView):

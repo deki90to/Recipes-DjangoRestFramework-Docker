@@ -4,26 +4,37 @@
 {% block body %}
 {% if user.is_authenticated %}
 
-<div class="container-fluid">
-    <form class="d-flex" action="{% url 'search' %}">
-      <input class="form-control me-2" type="search" placeholder="Search By Name, Ingredients or Text" aria-label="Search" name="search">
-      <button class="btn btn-outline-info" type="submit">Search</button>
-    </form>
-  </div>
+  <div class="container-fluid">
+      <form class="d-flex" action="{% url 'search' %}">
+        <input class="form-control me-2" type="search" placeholder="Search By Name, Ingredients or Text" aria-label="Search" name="search">
+        <button class="btn btn-outline-info" type="submit">Search</button>
+      </form>
+    </div>
   
-<br><p><i> ordered: A-Z </i></p>
+    <br><p><i> ordering: A-Z </i></p>
 
     {% for recipe in recipe_list %}
-    <br> <b> <i> <h3> {{ recipe.recipe_name }} </h3> </i> </b> <br> <br>
-
+    <br> 
+    <b> <i> <h3> {{ recipe.recipe_name }} </h3> </i> </b> 
+    <br> 
+    <br>
         <ul>
-            <li> <i> <h5> Ingredients: </h5> <br> {{ recipe.recipe_ingredients }} </i> </li> <br> <br>
-
-            <li> <i> <h5> Manual: </h5> <br> {{ recipe.recipe_text }} </i> </li> <br> <br>
+              <li> 
+                <i> <h5> Ingredients: </h5> <br> {{ recipe.recipe_ingredients }} </i> 
+              </li> 
+            <br> 
+            <br>
+              <li> 
+                <i> <h5> Manual: </h5> <br> {{ recipe.recipe_text }} </i> 
+              </li> 
+            <br> 
+            <br>
         </ul>
+        Author: {{ recipe.user }} 
+        <br>
+        Rating: {{ recipe.avg_rating }}
 
-    Author: {{ recipe.user }}
-    <hr>
+      <hr>
     {% endfor %}
 
 {% endif %}
