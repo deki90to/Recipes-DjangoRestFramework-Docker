@@ -3,17 +3,19 @@
 {% block body %}
 {% if user.is_authenticated %}
 <br>
-<form class="form-group" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <ul>
-    	<br>
-        <h6>Are you sure you want to delete <i><b>{{ object }}</b></i>?</h6>
-        <br>
-        
-        <button class='btn btn-info text-light'> YES </button> 
-        <a href="{% url 'my-recipes' %}" class="btn btn-info text-light"> NO </a>
-    </ul>
-</form>
+
+    <form class="form-group" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <ul>
+            <br>
+            <h6>Are you sure you want to delete <i><b>{{ object }}</b></i>?</h6>
+            <br>
+            
+            <button class='btn btn-info text-light'> YES </button> 
+            <a href="{% url 'my-recipes' %}" class="btn btn-info text-light"> NO </a>
+        </ul>
+    </form>
+    
 {% endif %}
 {% endblock %}

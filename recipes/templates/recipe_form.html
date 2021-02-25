@@ -4,22 +4,23 @@
 {% block body %}
 {% if user.is_authenticated %}
 <br>
-    <form class="form-group" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-        <table class="table">
-            {{ form.as_table }}
-        </table>
-        <br><br>
-        
-        <input class="btn btn-info text-light" type="submit" value='Post'>
-        <a href="{% url 'recipes' %}" class="btn btn-info text-light"> Cancel </a>
+<form class="form-group" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+    <table class="table">
+        {{ form.as_table }}
+        {{ form.media }}
+    </table>
+    <br><br>
 
-        <script>
-            var name = '{{ user.id }}';
-            document.getElementById('admin').value = name;
-        </script>
+    <input class="btn btn-info text-light" type="submit" value='Post'>
+    <a href="{% url 'recipes' %}" class="btn btn-info text-light"> Cancel </a>
 
-    </form>
+    <script>
+        var name = '{{ user.id }}';
+        document.getElementById('admin').value = name;
+    </script>
+
+</form>
 
 {% endif %}
 {% endblock %}

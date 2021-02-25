@@ -3,7 +3,7 @@ from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls.base import reverse
 from django.views import generic
-from . models import Recipe
+from . models import Recipe, Rating
 from . forms import RecipeListForm, RecipeCreateForm
 from django.urls import reverse_lazy
 from django.db.models import Q
@@ -42,7 +42,6 @@ class MyRecipeUpdateView(generic.UpdateView):
     model = Recipe
     form_class = RecipeCreateForm
     success_url = reverse_lazy('my-recipes')
-
 
 
 def search(request):

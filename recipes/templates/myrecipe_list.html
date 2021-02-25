@@ -4,11 +4,15 @@
 {% block body %}
 {% if user.is_authenticated %}
 
-<br><p><i> ordering: By Last One </i></p>
+<br><p><i> ordering: Last Added </i></p>
 
 {% for recipe in recipe_list %}
     {% if request.user == recipe.user %}
-
+    <br>
+    {% if recipe.recipe_image %}
+        <img src="{{ recipe.recipe_image.url }}">
+    {% endif %}
+    <br>
     <br> <b> <i> <h3> {{ recipe.recipe_name }} </h3> </i> </b> 
     <br> 
     <br>
@@ -25,13 +29,12 @@
         <br>
         </ul>            
         Author: {{ recipe.user }} 
-        <br>
-        Rating: {{ recipe.avg_rating }}
-    <br> 
-    <br>            
-    <a href="{% url 'my-recipe-update' recipe.pk %}" class="btn btn-sm btn-outline-info bg-light text-info"> Update </a>
-    <a href="{% url 'my-recipe-delete' recipe.pk %}" class="btn btn-sm btn-outline-info bg-light text-danger"> Delete </a>
-    <hr>
+        <br> <br>
+
+        <a href="{% url 'my-recipe-update' recipe.pk %}" class="btn btn-sm btn-outline-info"> Update </a>
+        <a href="{% url 'my-recipe-delete' recipe.pk %}" class="btn btn-sm btn-outline-info"> Delete </a>
+        - Average Rate: {{ recipe.avg_rating }} 
+        <hr style="border:5px solid #f1f1f1">
 
     {% endif %}
 {% endfor %}
