@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.db import models
 from django.db.models.expressions import OrderBy
 from django.db.models.fields import CharField
@@ -20,7 +19,7 @@ class Recipe(models.Model):
     recipe_text = models.TextField(max_length=10000)
     date = models.DateTimeField(auto_now_add=True, null=True)
     user_email = models.EmailField(max_length=50, blank=True)
-    recipe_image = ResizedImageField(size=[320, 240], quality=100, upload_to='pictures', blank=True, null=True)
+    recipe_image = ResizedImageField(size=[480, 320], quality=100, upload_to='pictures', blank=True, null=True)
 
     def __str__(self):
         return (f'{self.recipe_name} | {self.user}, {self.user_email}')
@@ -44,4 +43,10 @@ class Rating(models.Model):
     mark = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
 
     def __str__(self):
-        return (f'{self.recipe}, {self.score}')
+        return (f'{self.recipe}, {self.mark}')
+
+
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def create_auth_token(sender, instance=None, created=False, **kwargs):
+    if created:
+        Token.objects.create(user=instance)

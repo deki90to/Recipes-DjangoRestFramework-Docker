@@ -4,11 +4,10 @@
 {% block body %}
 {% if user.is_authenticated %}
 
-<br><p><i> ordering: Last Added </i></p>
-
+<p><i> ordering: Last Added </i></p>
+<br>
 {% for recipe in recipe_list %}
     {% if request.user == recipe.user %}
-    <br>
     {% if recipe.recipe_image %}
         <img src="{{ recipe.recipe_image.url }}">
     {% endif %}
