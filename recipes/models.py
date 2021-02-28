@@ -52,7 +52,6 @@ class Review(models.Model):
     # rate = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     rate = models.PositiveSmallIntegerField(choices=RATE_CHOICES)
     
-
     def __str__(self):
         return (f'{self.recipe}, {self.rate}')
 
