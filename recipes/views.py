@@ -84,11 +84,11 @@ def rate(request, pk):
     else:
         form = ReviewForm()
 
-    template = loader.get_template('rate.html')
+    template = get_template('rate.html')
 
     context = {
         'form':form,
         'recipe':recipe,
     }
 
-    return HttpResponseRedirect(template.render(context, request))
+    return HttpResponseRedirect(render(context, request))
