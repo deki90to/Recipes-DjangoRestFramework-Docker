@@ -14,13 +14,13 @@ from rest_framework.authtoken.models import Token
 
 
 class Recipe(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    recipe_name = models.CharField(max_length=200)
-    recipe_ingredients = models.TextField(max_length=3000)
-    recipe_text = models.TextField(max_length=10000)
-    date = models.DateTimeField(auto_now_add=True, null=True)
-    user_email = models.EmailField(max_length=50, blank=True)
-    recipe_image = ResizedImageField(size=[480, 320], quality=100, upload_to='pictures', blank=True, null=True)
+    user =                  models.ForeignKey(User, on_delete=models.CASCADE)
+    recipe_name =           models.CharField(max_length=200)
+    recipe_ingredients =    models.TextField(max_length=3000)
+    recipe_text =           models.TextField(max_length=10000)
+    date =                  models.DateTimeField(auto_now_add=True, null=True)
+    recipe_image =          ResizedImageField(size=[480, 320], quality=100, upload_to='pictures', blank=True, null=True)
+    user_email =            models.EmailField(max_length=50, blank=True)
 
     def __str__(self):
         return (f'{self.recipe_name} | {self.user}, {self.user_email}')

@@ -20,7 +20,7 @@
         <img src="{{ recipe.recipe_image.url }}" class="center">
     {% endif %}
 
-  <br> <br>
+  <br>
   <b> <i> <h3> 
     {{ recipe.recipe_name }} 
   </h3> </i> </b>
@@ -36,20 +36,19 @@
           <br> 
           <br>
             <li> 
-              <i> <h5> Manual </h5> <br> 
+              <i> <h5> Instructions </h5> <br> 
                 <h6> {{ recipe.recipe_text }} </h6></i> 
             </li> 
           <br> 
           <br>
       </ul>
-      Author: <b>{{ recipe.user }} | {{ recipe.user_email }}</b>
-      <br> <br>
+      <p>Author: {{ recipe.user }} | {{ recipe.user_email }} </p> 
+      <br>
 
 
       {% if request.user != recipe.user %}
-          Average Rate: {{ recipe.avg_rating }}
-            <br>
-            <br>
+          <p> Average Rate: {{ recipe.avg_rating }} </p> 
+
               <form method="POST">
                 {% csrf_token %}
                   <input id="rating" type="text" name="rating" placeholder="Rate 1-5">
@@ -60,7 +59,7 @@
       {% endif %}
 
       {% for rate in rating %}
-          {{ rate.rating }}
+         <p> {{ rate.rating }} </p>
       {% endfor %}
 
       <hr style="border:5px solid #f1f1f1">

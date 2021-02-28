@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<br>
+<br><br><br><br><br>
 
 <h1> Login </h1>
 <br>
@@ -10,7 +10,7 @@
 		{% csrf_token %}
 		{{ form.as_p }}
 		<br>
-		<button class="btn btn-primary"> Login </button>
+		<button class="btn btn-info"> Login </button>
 	</form>
 </div>
 {% endblock %}
