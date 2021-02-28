@@ -11,7 +11,7 @@
       </form>
     </div>
   
-  <br><p><i> ordering: Ascending </i></p>
+  <br><p><i> ordering: A-Z </i></p>
 
   {% for recipe in recipe_list %}
 <br>
@@ -43,18 +43,41 @@
       
 
 
-
-
       {% if request.user != recipe.user %}
 
-        <div class="container-fluid">
-          <form class="form-group">
-            <input type="submit" value="RATE" class="btn btn-outline-info btn-sm" name="rate"> - Average Rate: {{ recipe.avg_rating }} 
-          </form>
-        </div>
+      Average Rate: {{ recipe.avg_rating }}
+        <br>
+        <br>
+        <a href="{% url 'rate' recipe.pk %}" class="btn btn-primary">Rate</a>
+
+        
+          <!-- <form method="POST" role='POST'>
+            {% csrf_token %}
+            <input type="text" id="rating" placeholder="Rate 1 - 5" name="rating"><br>
+             <button class="btn btn-outline-info btn-sm" type="submit">Submit</button>
+          </form> -->
+
+
+      <!-- <form method="POST">
+        {% csrf_token %}
+          <input id="rating" type="text" name="rating" placeholder="Rate 1-5">
+          <input type="submit" value="OK">
+      </form> -->
+
+
       {% else %}
+
           Average Rate: {{ recipe.avg_rating }}
+
       {% endif %}
+
+      {% for rate in rating %}
+          {{ rate.rating }}
+      {% endfor %}
+
+
+
+
       <hr style="border:5px solid #f1f1f1">
   {% endfor %}
 

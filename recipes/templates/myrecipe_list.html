@@ -24,15 +24,17 @@
             <li> 
                 <i> <h5> Manual: </h5> <br> {{ recipe.recipe_text }} </i> 
             </li> 
-        <br> 
-        <br>
+        <br> <br>
         </ul>            
         Author: {{ recipe.user }} 
+        <br> <br> 
+        Average Rate: {{ recipe.avg_rating }} 
         <br> <br>
 
         <a href="{% url 'my-recipe-update' recipe.pk %}" class="btn btn-sm btn-outline-info"> Update </a>
         <a href="{% url 'my-recipe-delete' recipe.pk %}" class="btn btn-sm btn-outline-info"> Delete </a>
-        - Average Rate: {{ recipe.avg_rating }} 
+
+        
         <hr style="border:5px solid #f1f1f1">
 
     {% endif %}

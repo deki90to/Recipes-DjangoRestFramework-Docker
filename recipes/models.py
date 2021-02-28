@@ -12,6 +12,7 @@ from rest_framework.authtoken.models import Token
 
 # Create your models here.
 
+
 class Recipe(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     recipe_name = models.CharField(max_length=200)
@@ -29,21 +30,31 @@ class Recipe(models.Model):
 
     def avg_rating(self):
         sum = 0
-        ratings = Rating.objects.filter(recipe=self)
+        ratings = Review.objects.filter(recipe=self)
         for rating in ratings:
-            sum += rating.mark
+            sum += rating.rate
         if len(ratings) > 0:
             return sum / len(ratings)
         else:
-            return 0
+            return 'No Ratings'
 
 
-class Rating(models.Model):
+RATE_CHOICES = [
+    (1, 'Very Bad'),
+    (2, 'Bad'),
+    (3, 'Ok'),
+    (4, 'Good'),
+    (5, 'Very Good')
+]
+
+class Review(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-    mark = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    # rate = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    rate = models.PositiveSmallIntegerField(choices=RATE_CHOICES)
+    
 
     def __str__(self):
-        return (f'{self.recipe}, {self.mark}')
+        return (f'{self.recipe}, {self.rate}')
 
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
