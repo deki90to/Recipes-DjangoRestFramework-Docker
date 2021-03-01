@@ -97,4 +97,10 @@ def search(request):
 class RateCreateView(generic.CreateView):
     model = Rate
     form_class = RateForm
-    template_name = 'rate.html'
+    template_name = 'rate_form.html'
+    success_url = reverse_lazy('recipes')
+
+
+def details(request, pk):
+    recipe_details = Recipe.objects.filter(pk=pk)
+    return render(request, 'recipe_details.html', {'recipe_details': recipe_details})

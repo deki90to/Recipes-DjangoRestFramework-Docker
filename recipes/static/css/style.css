@@ -1,62 +1,63 @@
-h3 {
-    color: greenyellow;
-    text-align: center;
-    font-family: verdana;
-  }
+input[type=text], input[type=note], input[type=email], input[type=number], 
+input[type=file], input[type=password], input[name=username], input[type=address], 
+input[name=buyed_item], input[name=product_brand], select, textarea {
+  text-width: 20%;
+  text-width: 0px;
+  padding: 3px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+  width: 95%;
+}
 
-h5 {
-    color: greenyellow;
-    font-family: verdana;
-  }
-
-  h6 {
-    color: white;
-    font-family: verdana;
-    margin-right: 30px;
-    margin-left: 30px;
-  }
-
-  .center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-  }
-
-  div {
-    color: white;
-  }
-  
-  p {
-    color: white;
-  }
-
-  img:hover {
-    opacity: 0.9;
-  }
-
-  input[type=text], input[type=note], input[type=email], input[type=number], 
-  input[type=file], input[type=password], input[name=username], input[type=address], 
-  input[name=buyed_item], input[name=product_brand], select, textarea {
-    text-width: 20%;
-    text-width: 0px;
-    padding: 3px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    resize: vertical;
-    color: white;
-    width: 95%;
-  }
-
-
-  
-  body {
+body {
     background-image: url('https://wallpaperaccess.com/full/1904961.jpg');
     background-attachment: fixed;
     background-size: 100% 100%;
 }
 
+img:hover {
+    opacity: 0.9;
+}
 
-.form-group {
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+
+div {
     color: white;
 }
+
+
+h3 {
+    color: greenyellow;
+    text-align: center;
+    font-family: verdana;
+    }
+
+h5 {
+    color: greenyellow;
+    font-family: verdana;
+    }
+
+h6 {
+    color: white;
+    font-family: verdana;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+
+
+p {
+    color: white;
+  }
+
+  .img-container {
+    text-align: center;
+    display: block;
+  }

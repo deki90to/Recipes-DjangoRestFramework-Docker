@@ -14,10 +14,10 @@
   <br><p><i> ordering: <b> A-Z </b> </i></p>
 
   {% for recipe in recipe_list %}
-<br>
+  <br>
 
     {% if recipe.recipe_image %}
-        <img src="{{ recipe.recipe_image.url }}" class="center">
+        <a href="{% url 'details' recipe.pk %}"><img src="{{ recipe.recipe_image.url }} " class="img-container"></a>
     {% endif %}
 
   <br>
@@ -46,24 +46,32 @@
       <br>
 
 
+
+
       {% if request.user != recipe.user %}
+          
+          <a href="{% url 'rate-create' recipe.pk %}" class="btn btn-outline-light btn-sm">Rate Recipe </a>
+          <br>
+          <br>
           <p> Average Rate: {{ recipe.avg_rating }} </p> 
 
-              <form method="POST">
-                {% csrf_token %}
-                  <input id="rating" type="text" name="rating" placeholder="Rate 1-5">
-                  <input type="submit" value="OK">
-              </form>
           {% else %}
-             <p>Average Rating: {{ recipe.avg_rating }} </p> 
+             <p> Average Rating: {{ recipe.avg_rating }} </p> 
       {% endif %}
+
+
 
       {% for rate in rating %}
          <p> {{ rate.rating }} </p>
       {% endfor %}
 
+
+
       <br>
-      <a href="#" class="btn btn-outline text-light btn-sm">Back To Top</a>
+      <br>
+      <a href="#" class="btn btn-outline text-light btn-sm">⬆ Back To The Top ⬆</a>
+
+
 
       <hr style="border:5px solid #f1f1f1">
   {% endfor %}

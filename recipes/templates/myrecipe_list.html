@@ -31,15 +31,15 @@
         </ul>            
         <p> Author: {{ recipe.user }} | {{ recipe.user_email }}</p>
         <br>
-       <p> Average Rate: {{ recipe.avg_rating }} </p> 
+       <p> Average Rating: {{ recipe.avg_rating }} </p> 
         <br> 
 
         <a href="{% url 'my-recipe-update' recipe.pk %}" class="btn btn-sm btn-outline-info"> Edit </a>
         <a href="{% url 'my-recipe-delete' recipe.pk %}" class="btn btn-sm btn-outline-info text-danger"> Delete </a>
-
         <br>
         <br>
-        <a href="#" class="btn btn-outline-light text-light btn-sm">Back To Top</a>
+        <br>
+        <a href="#" class="btn btn-outline text-light btn-sm">⬆ Back To The Top ⬆</a>
         
         <hr style="border:5px solid #f1f1f1">
 

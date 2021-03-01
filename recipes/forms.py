@@ -22,5 +22,8 @@ class RateForm(forms.ModelForm):
     class Meta:
         model = Rate
         fields = ('recipe', 'rate')
+        widgets = {
+            'rate': forms.TextInput(attrs={'placeholder': 'Rate from 1 - 5'})
+        }
 
-    rate = forms.ChoiceField(choices=RATE_CHOICES, widget=forms.Select(), required=True)
+    # rate = forms.ChoiceField(choices=RATE_CHOICES, widget=forms.Select(), required=True)
