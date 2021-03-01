@@ -55,12 +55,15 @@
                   <input type="submit" value="OK">
               </form>
           {% else %}
-              Average Rate: <b>{{ recipe.avg_rating }}</b>
+             <p>Average Rating: {{ recipe.avg_rating }} </p> 
       {% endif %}
 
       {% for rate in rating %}
          <p> {{ rate.rating }} </p>
       {% endfor %}
+
+      <br>
+      <a href="#" class="btn btn-outline text-light btn-sm">Back To Top</a>
 
       <hr style="border:5px solid #f1f1f1">
   {% endfor %}

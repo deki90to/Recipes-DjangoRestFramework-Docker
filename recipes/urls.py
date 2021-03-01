@@ -12,5 +12,5 @@ urlpatterns = [
     path('my-recipes/<pk>/update/', views.MyRecipeUpdateView.as_view(), name='my-recipe-update'),
     path('search/', views.search, name='search'),
 
-    path('<pk>/rate/', views.rate, name='rate'),
+
 ]

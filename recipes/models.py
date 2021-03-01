@@ -30,7 +30,7 @@ class Recipe(models.Model):
 
     def avg_rating(self):
         sum = 0
-        ratings = Review.objects.filter(recipe=self)
+        ratings = Rate.objects.filter(recipe=self)
         for rating in ratings:
             sum += rating.rate
         if len(ratings) > 0:
@@ -47,10 +47,10 @@ RATE_CHOICES = [
     (5, 'Very Good')
 ]
 
-class Review(models.Model):
+class Rate(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-    # rate = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
-    rate = models.PositiveSmallIntegerField(choices=RATE_CHOICES)
+    rate = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    # rate = models.PositiveSmallIntegerField(choices=RATE_CHOICES)
     
     def __str__(self):
         return (f'{self.recipe}, {self.rate}')

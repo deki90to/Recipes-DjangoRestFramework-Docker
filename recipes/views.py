@@ -3,8 +3,8 @@ from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls.base import reverse
 from django.views import generic
-from . models import Recipe, Review
-from . forms import RecipeListForm, RecipeCreateForm, ReviewForm
+from . models import Recipe, Rate
+from . forms import RecipeListForm, RecipeCreateForm, RateForm
 from django.urls import reverse_lazy
 from django.db.models import Q
 from django.db.models import Count
@@ -68,27 +68,33 @@ def search(request):
 #         return render(request, 'rating_form.html', {'form': form})
 
 
-def rate(request, pk):
-    recipe = Recipe.objects.get(pk=pk)
-    user = request.user
+# def rate(request, pk):
+#     recipe = Recipe.objects.get(pk=pk)
+#     user = request.user
 
-    if request.method == 'POST':
-        form = ReviewForm(request.POST)
+#     if request.method == 'POST':
+#         form = ReviewForm(request.POST)
 
-        if form.is_valid():
-            rate = form.save(commit=False)
-            rate.recipe = recipe
-            rate.user = user
-            rate.save()
-            return HttpResponseRedirect(reverse('recipes', args=[pk]))
-    else:
-        form = ReviewForm()
+#         if form.is_valid():
+#             rate = form.save(commit=False)
+#             rate.recipe = recipe
+#             rate.user = user
+#             rate.save()
+#             return HttpResponseRedirect(reverse('recipes', args=[pk]))
+#     else:
+#         form = ReviewForm()
 
-    template = get_template('rate.html')
+#     template = get_template('rate.html')
 
-    context = {
-        'form':form,
-        'recipe':recipe,
-    }
+#     context = {
+#         'form':form,
+#         'recipe':recipe,
+#     }
 
-    return HttpResponseRedirect(render(context, request))
+#     return HttpResponseRedirect(render(context, request))
+
+
+class RateCreateView(generic.CreateView):
+    model = Rate
+    form_class = RateForm
+    template_name = 'rate.html'
