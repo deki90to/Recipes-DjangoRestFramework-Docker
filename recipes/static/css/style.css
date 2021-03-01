@@ -8,30 +8,28 @@ input[name=buyed_item], input[name=product_brand], select, textarea {
   border-radius: 5px;
   resize: vertical;
   width: 95%;
-}
+    }
 
 body {
     background-image: url('https://wallpaperaccess.com/full/1904961.jpg');
     background-attachment: fixed;
     background-size: 100% 100%;
-}
+    }
 
 img:hover {
     opacity: 0.9;
-}
+    }
 
 .center {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-}
-
+    }
 
 div {
     color: white;
-}
-
+    }
 
 h3 {
     color: greenyellow;
@@ -49,15 +47,8 @@ h6 {
     font-family: verdana;
     margin-right: 30px;
     margin-left: 30px;
-}
-
-
+    }
 
 p {
     color: white;
-  }
-
-  .img-container {
-    text-align: center;
-    display: block;
   }

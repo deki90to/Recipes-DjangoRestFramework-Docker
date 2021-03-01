@@ -4,14 +4,20 @@
 {% if user.is_authenticated %}
     {% if recipe %}
 
-
+<br>
         {% for search in recipe %}
+        <h3> Search results </h3>
         <br>
-
+        <br>
         {% if search.recipe_image %}
-            <img src="{{ search.recipe_image.url }}">
+            <img src="{{ search.recipe_image.url }}" class="center">
+
         {% endif %}
 
+        {% if not search %}
+        <h3> NO results </h3>
+        {% endif %}
+        <br>
         <br> <b> <i> <h3> {{ search.recipe_name }} </h3> </i> </b> <br> <br>
             <ul>
                 <li> <h5> Ingredients: </h5> <br> {{ search.recipe_ingredients }} </li> <br> <br>
