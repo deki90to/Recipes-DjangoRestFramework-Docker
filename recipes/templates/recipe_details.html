@@ -3,35 +3,33 @@
 
 
 {% block body %}
-    {% if user.is_authenticated %}
+{% if user.is_authenticated %}
 
-    {% for detail in recipe_details %}
+{% for detail in recipe_details %}
 
-    <b> <i> <h3> 
-        {{ detail.recipe_name }} 
-      </h3> </i> </b>
-      <br> 
-      <br>
-        <ul>
-            <li> 
-            <i> <h5> Ingredients </h5>
-                <br> 
-                <h6> {{ detail.recipe_ingredients }} </h6>
-            </i> 
-            </li> 
+<b> <i> <h3> 
+{{ detail.recipe_name }} 
+</h3> </i> </b>
+<br> 
+<br>
+<ul>
+    <li> 
+    <i> <h5> Ingredients </h5>
         <br> 
-        <br>
-            <li> 
-            <i> <h5> Instructions </h5> <br> 
-                <h6> {{ detail.recipe_text }} </h6></i> 
-            </li> 
-            <br> 
-            <br>
-        </ul>
+        <h6> {{ detail.recipe_ingredients }} </h6> </i> 
+    </li> 
+    <br> 
+    <br>
+    <li> <i> <h5> Instructions </h5> <br> 
+        <h6> {{ detail.recipe_text }} </h6></i> 
+    </li> 
+    <br> 
+    <br>
+</ul>
 
-        <a href="{% url 'recipes' %}" class="btn btn-outline text-warning btn-sm">⇦ Back To Home Page </a>
+<a href="{% url 'recipes' %}" class="btn btn-outline text-warning btn-sm">⇦ Back To Home Page </a>
 
-    {% endfor %}
+{% endfor %}
 
-    {% endif %}
+{% endif %}
 {% endblock %}

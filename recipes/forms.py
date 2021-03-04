@@ -1,7 +1,7 @@
 # from recipes.views import rating
 from django import forms
 from django.db.models import fields
-from . models import Recipe, Rate, RATE_CHOICES
+from . models import Recipe, Rate
 
 
 class RecipeListForm(forms.ModelForm):
@@ -25,5 +25,3 @@ class RateForm(forms.ModelForm):
         widgets = {
             'rate': forms.TextInput(attrs={'placeholder': 'Rate from 1 - 5'})
         }
-
-    # rate = forms.ChoiceField(choices=RATE_CHOICES, widget=forms.Select(), required=True)

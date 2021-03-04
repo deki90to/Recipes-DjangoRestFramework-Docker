@@ -2,80 +2,84 @@
 
 
 {% block body %}
-  {% if user.is_authenticated %}
+{% if user.is_authenticated %}
 
-    <div class="container-fluid">
-        <form class="d-flex" action="{% url 'search' %}">
-          <input class="form-control me-2" type="search" placeholder="Search By Name, Ingredients or Text" aria-label="Search" name="search">
-          <button class="btn btn-outline-info text-light" type="submit">Search</button>
-        </form>
-      </div>
-      <br>
-    
-    <br><p><i> ordering: <b> A-Z </b></i></p>
+<div class="container-fluid">
+    <form class="d-flex" action="{% url 'search' %}">
+      <input class="form-control me-2" type="search" placeholder="Search By Name, Ingredients or Text" aria-label="Search" name="search">
+      <button class="btn btn-outline-info text-light" type="submit">Search</button>
+    </form>
+  </div>
+  <br>
 
-    {% for recipe in recipe_list %}
-
-      <br>
-      {% if recipe.recipe_image %}
-          <a href="{% url 'details' recipe.pk %}"><img src="{{ recipe.recipe_image.url }}" class="center"></a>
-      {% endif %}
-
-      <br>
-      <br>
-      <br>
-
-    <b> <i> <h3> 
-      {{ recipe.recipe_name }} 
-    </h3> </i> </b>
-    <br> 
-    <br>
-        <ul>
-              <li> 
-                <i> <h5> Ingredients </h5>
-                  <br> 
-                  <h6> {{ recipe.recipe_ingredients }} </h6>
-                </i> 
-              </li> 
-            <br> 
-            <br>
-              <li> 
-                <i> <h5> Instructions </h5> <br> 
-                  <h6> {{ recipe.recipe_text }} </h6></i> 
-              </li> 
-            <br> 
-            <br>
-        </ul>
-        <p>Author: {{ recipe.user }} | {{ recipe.user_email }} </p> 
-        <br>
+<br><p><i> ordering: <b> A-Z </b></i></p>
 
 
+{% for recipe in recipe_list %}
 
-        {% for rate in rating %}
-          <p> {{ rate.rating }} </p>
-        {% endfor %}
-
-        <br>
-        <br>
-
-
-        {% if request.user != recipe.user %}
-                
-        <a href="{% url 'rate-create' recipe.pk %}" class="btn btn-outline-light btn-sm">Rate Recipe </a>
-        <br>
-        <br>
-
-          <p> Average Rating: {{ recipe.avg_rating }} </p> 
-
-      {% else %}
-          <p> Average Rating: {{ recipe.avg_rating }} </p> 
-      {% endif %}
-
-
-        <a href="#" class="btn btn-outline text-light btn-sm"> ⤴ Back To Top </a>
-
-        <hr style="border:5px solid #f1f1f1">
-    {% endfor %}
-
+  <br>
+  {% if recipe.recipe_image %}
+      <a href="{% url 'details' recipe.pk %}"><img src="{{ recipe.recipe_image.url }}" class="center"></a>
   {% endif %}
+
+  <br>
+  <br>
+  <br>
+
+  <b> <i> <h3> 
+  {{ recipe.recipe_name }} 
+  </h3> </i> </b>
+  <br> 
+  <br>
+    <ul>
+          <li> 
+            <i> <h5> Ingredients </h5>
+              <br> 
+              <h6> {{ recipe.recipe_ingredients }} </h6>
+            </i> 
+          </li> 
+        <br> 
+        <br>
+          <li> 
+            <i> <h5> Instructions </h5> <br> 
+              <h6> {{ recipe.recipe_text }} </h6></i> 
+          </li> 
+        <br> 
+        <br>
+    </ul>
+    <p>Author: {{ recipe.user }} | {{ recipe.user_email }} </p> 
+    <br>
+    <br>
+    <br>
+
+
+    {% if request.user != recipe.user %}
+            
+    <a href="{% url 'rate-create' recipe.pk %}" class="btn btn-outline-light btn-sm">Rate Recipe </a>
+    <br>
+    <br>
+      <p> Average Rating: {{ recipe.avg_rating }} </p> 
+    {% else %}
+        <p> Average Rating: {{ recipe.avg_rating }} </p>     
+    {% endif %}
+
+    <br>
+    <br>
+
+    <!-- <form action="" method="POST">
+      {% csrf_token %}
+      {{ form }}
+    <input type="submit" value="Rate">
+    </form> -->
+
+    <br>
+    <br>
+
+    <a href="#" class="btn btn-outline text-light btn-sm"> ⤴ Back To Top </a>
+
+
+    <hr style="border:5px solid #f1f1f1">
+{% endfor %}
+
+{% endif %}
 {% endblock %}

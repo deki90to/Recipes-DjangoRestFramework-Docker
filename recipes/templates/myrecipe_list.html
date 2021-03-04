@@ -6,44 +6,48 @@
 
 <p> <i> ordering: <b> Last Added </b> </i></p>
 <br>
+
 {% for recipe in recipe_list %}
-    {% if request.user == recipe.user %}
-    {% if recipe.recipe_image %}
-        <img src="{{ recipe.recipe_image.url }}" class="center">
-    {% endif %}
+{% if request.user == recipe.user %}
+
+{% if recipe.recipe_image %}
+    <img src="{{ recipe.recipe_image.url }}" class="center">
+{% endif %}
+
     <br>
     <br> <b> <i> <h3> {{ recipe.recipe_name }} </h3> </i> </b> 
     <br> 
-        <ul>
-            <li> 
-                <i> <h5> Ingredients </h5> <br> 
-                    <h6>{{ recipe.recipe_ingredients }}</h6>
-                </i> 
-            </li> 
-        <br> 
-        <br>
-            <li> 
-                <i> <h5> Instructions </h5> <br> 
-                    <h6>{{ recipe.recipe_text }}</h6>
-                </i> 
-            </li> 
-        <br> <br>
-        </ul>            
-        <p> Author: {{ recipe.user }} | {{ recipe.user_email }}</p>
-        <br>
-       <p> Average Rating: {{ recipe.avg_rating }} </p> 
-        <br> 
+    <ul>
+        <li> 
+            <i> <h5> Ingredients </h5> <br> 
+                <h6>{{ recipe.recipe_ingredients }}</h6>
+            </i> 
+        </li> 
+    <br> 
+    <br>
+        <li> 
+            <i> <h5> Instructions </h5> <br> 
+                <h6>{{ recipe.recipe_text }}</h6>
+            </i> 
+        </li> 
+    <br> <br>
+    </ul>            
+    <p> Author: {{ recipe.user }} | {{ recipe.user_email }}</p>
+    <br>
+    <p> Average Rating: {{ recipe.avg_rating }} </p> 
 
-        <a href="{% url 'my-recipe-update' recipe.pk %}" class="btn btn-sm btn-outline-info"> Edit </a>
-        <a href="{% url 'my-recipe-delete' recipe.pk %}" class="btn btn-sm btn-outline-info text-danger"> Delete </a>
-        <br>
-        <br>
-        <br>
-        <a href="#" class="btn btn-outline text-light btn-sm">⤴ Back To Top </a>
-        
-        <hr style="border:5px solid #f1f1f1">
+    <br> 
+    <br>
+    <a href="{% url 'my-recipe-update' recipe.pk %}" class="btn btn-sm btn-outline-info"> Edit </a>
+    <a href="{% url 'my-recipe-delete' recipe.pk %}" class="btn btn-sm btn-outline-info text-danger"> Delete </a>
 
-    {% endif %}
+    <br>
+    <br>
+    <a href="#" class="btn btn-outline text-light btn-sm">⤴ Back To Top </a>
+    
+    <hr style="border:5px solid #f1f1f1">
+
+{% endif %}
 {% endfor %}
 
 {% endif %}

@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 
+
+
 {% block body %}
     {% if user.is_authenticated %}
         <form class="form-group" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <table class="table">
                 {{ form.as_table }}
-                {{ form.media }}
             </table>
             <br>
             <br>
